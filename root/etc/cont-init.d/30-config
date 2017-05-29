@@ -20,8 +20,6 @@ fi
 	cp /defaults/nzbget.conf /config/nzbget.conf
 
 # permissions
-chown abc:abc \
-	/downloads
 chown abc:abc -R \
 	/app \
 	/config
