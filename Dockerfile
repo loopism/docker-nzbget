@@ -17,8 +17,29 @@ RUN \
 	p7zip \
 	python2 \
 	unrar \
-	wget && \
- echo "**** install nzbget ****" && \
+	wget \
+        gcc \
+        autoconf \
+        automake \
+        git \
+        g++ \
+        make \
+        python-dev \
+        openssl-dev \
+        libffi-dev \
+        ffmpeg && \
+ 
+# Installing  par2cmdline
+git clone https://github.com/Parchive/par2cmdline /root/par2cmdline && \
+WORKDIR /root/par2cmdline
+aclocal && \
+automake --add-missing && \
+autoconf && \
+./configure && \
+make && \
+make install && \
+
+echo "**** install nzbget ****" && \
  mkdir -p \
 	/app/nzbget && \
  curl -o \
@@ -38,6 +59,9 @@ RUN \
 	-e "s#\(ConfigTemplate=\).*#\1$\{AppDir\}/webui/nzbget.conf.template#g" \
  /defaults/nzbget.conf && \
  echo "**** cleanup ****" && \
+# Removing all software installed in order to compile par2
+apk del gcc autoconf automake g++ make python-dev openssl-dev libffi-dev && \
+
  rm -rf \
 	/tmp/*
 
