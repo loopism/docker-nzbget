@@ -14,6 +14,7 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
+	ffmpeg \
 	p7zip \
 	python2 \
 	unrar \
@@ -27,13 +28,12 @@ RUN \
         python-dev \
         openssl-dev \
         libffi-dev \
-        ffmpeg && \
  
 # Installing  par2cmdline
-git clone https://github.com/Parchive/par2cmdline /root/par2cmdline && \
+git clone https://github.com/Parchive/par2cmdline /root/par2cmdline
 WORKDIR /root/par2cmdline
-aclocal && \
-automake --add-missing && \
+RUN aclocal && \
+automake --add-missing  && \
 autoconf && \
 ./configure && \
 make && \
