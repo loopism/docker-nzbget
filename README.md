@@ -19,6 +19,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 [![nzbget](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nzbget-banner.png)][appurl]
 
+This fork adds [nzbToMedia](https://github.com/clinton-hall/nzbToMedia) for post-processing, ffmpeg for transcoding and corruption detection, par2 for error recovery and git so that nzbToMedia can auto-update
 ## Usage
 
 ```
